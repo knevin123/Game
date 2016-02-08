@@ -32,6 +32,14 @@ class Map extends GameObject
          stroke(0,255,0);
          
      }//end for
+     mappos.y+=y*2;
+     for(mappos.x=0;mappos.x<width-x;mappos.x+=x)
+     {
+         rect(mappos.x,mappos.y,x,y);
+         fill(0,255,0);
+         stroke(0,255,0);
+     }//end for
+     
      
   }//end render 
 }//end class
