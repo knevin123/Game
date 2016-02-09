@@ -105,3 +105,23 @@ void level3()
   }
   
 }
+void level4()
+{
+  if (frameCount % 90 == 0 && num4<20)
+  {
+    GameObject ai = null;
+    int i = (int) random(0, 2);
+    switch (i)
+    {
+      case 0:
+        ai = new AI();
+        break;
+      case 1:
+        ai = new AI();
+        break;
+    }
+    gameObjects.add(ai);
+    num4++;
+  }
+  
+}
