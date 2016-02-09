@@ -70,7 +70,8 @@ void draw()
     
   }
   checkhits();
-  //println(money);
+  menu();
+  println(money);
 }
 
 void level1()
@@ -219,4 +220,13 @@ void checkhits()
       }
     } 
   }
+}
+//menu at bottom of the screen
+void menu()
+{
+  fill(255);
+  stroke(255);
+  textSize(26);
+  text("level:",width/12,height-(height/8)+30);
+  
 }
