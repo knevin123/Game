@@ -5,6 +5,8 @@ void setup()
   //gameObjects.add(map);
   
   map2=new Map();
+  turpos = new PVector(0, 0);
+  money=500;
   
   
 }
@@ -12,15 +14,14 @@ void setup()
 // The class name always starts with uppercase!!
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<GameObject> turrents = new ArrayList<GameObject>();
+int num=0;
+int size;
+int money;
+PVector turpos;
+boolean draw;
 boolean[] keys = new boolean[512];
 Map map2;
-PVector turpos;
-//5 ints to count the number of AI spawned
-int num1=0;
-int num2=0;
-int num3=0;
-int num4=0;
-int num5=0;
+
 void keyPressed()
 {
   keys[keyCode] = true;
@@ -34,30 +35,45 @@ void keyReleased()
 void draw()
 {
   background(0); 
+  size=0;
   //use draw to create parameters for different levels AI in levels ect
   turpos=map2.mousePressed();
+  //println(turpos);
   map2.update();
   map2.render();
-  //draws and moves AI
+  
   for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
   {
     GameObject go = gameObjects.get(i);
+    if(go instanceof Turrent)
+    {
+      size++;
+    }
+      
     go.update();
     go.render();
     
-  } 
+  }  
   for(int i = turrents.size() - 1 ; i >= 0 ;i --)
   {
-    GameObject go = turrents.get(i);   
+    GameObject go = turrents.get(i);
+    if(go instanceof Turrent)
+    {
+      size++;
+    }
+      
     go.update();
     go.render();
     
   }
-  level1();
+  level2();
+  println(size); 
+  //println(money);
 }
+
 void level1()
 {
-  if (frameCount % 90 == 0 && num1<5)
+  if (frameCount % 90 == 0 && num<5)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -71,13 +87,13 @@ void level1()
         break;
     }
     gameObjects.add(ai);
-    num1++;
+    num++;
   }
   
-}//end level1
+}
 void level2()
 {
-  if (frameCount % 90 == 0 && num2<10)
+  if (frameCount % 90 == 0 && num<10)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -91,13 +107,13 @@ void level2()
         break;
     }
     gameObjects.add(ai);
-    num2++;
+    num++;
   }
   
 }
 void level3()
 {
-  if (frameCount % 90 == 0 && num3<15)
+  if (frameCount % 90 == 0 && num<15)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -111,34 +127,14 @@ void level3()
         break;
     }
     gameObjects.add(ai);
-    num3++;
-  }
-  
-}
-void level4()
-{
-  if (frameCount % 90 == 0 && num4<20)
-  {
-    GameObject ai = null;
-    int i = (int) random(0, 2);
-    switch (i)
-    {
-      case 0:
-        ai = new AI();
-        break;
-      case 1:
-        ai = new AI();
-        break;
-    }
-    gameObjects.add(ai);
-    num4++;
+    num++;
   }
   
 }
 
-void level5()
+void level4()
 {
-  if (frameCount % 90 == 0 && num5<25)
+  if (frameCount % 90 == 0 && num<20)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -152,17 +148,40 @@ void level5()
         break;
     }
     gameObjects.add(ai);
-    num5++;
+    num++;
+  }
+  
+}
+void level5()
+{
+  if (frameCount % 90 == 0 && num<25)
+  {
+    GameObject ai = null;
+    int i = (int) random(0, 2);
+    switch (i)
+    {
+      case 0:
+        ai = new AI();
+        break;
+      case 1:
+        ai = new AI();
+        break;
+    }
+    gameObjects.add(ai);
+    num++;
   }
   
 }
 void mouseClicked()
 {
-  
+  if(money>=250)
+  {
     println(turpos);
     
     GameObject turrent = null;
     turrent = new Turrent(turpos);
     turrents.add(turrent);
-  
+    money=money-250;
+    //println(size); 
+  }
 }

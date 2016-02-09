@@ -5,6 +5,8 @@ class Map extends GameObject
   int y=height/8;
   PVector turrent;
   PVector mappos;
+  float squarex;
+  int squarey;
   float x1;
   float y1;
   
@@ -32,10 +34,11 @@ class Map extends GameObject
          {
            fill(255,0,0);
            stroke(255,0,0);
+         
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
-             y1=mappos.y;
+             y1=mappos.y+(y/2);
            }
          }//end if
          
@@ -54,7 +57,7 @@ class Map extends GameObject
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
-             y1=mappos.y;
+             y1=mappos.y+(y/2);
            }
          }//end if
          rect(mappos.x,mappos.y,x,y);
@@ -71,7 +74,7 @@ class Map extends GameObject
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
-             y1=mappos.y;
+             y1=mappos.y+(y/2);
            }
          }//end if
          rect(mappos.x,mappos.y,x,y);
@@ -97,8 +100,6 @@ class Map extends GameObject
          
      }//end for
   }//end render
-  
-  //mousepressed which gets the position on the map where you clicked
   PVector mousePressed() 
   { 
     turrent.x=x1;
@@ -106,5 +107,5 @@ class Map extends GameObject
     //println(turrent);
     return turrent;
      
-  }//end mouseclicked
+  }//end mouseclicked  
 }//end class
