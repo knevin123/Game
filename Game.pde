@@ -14,6 +14,7 @@ ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<GameObject> turrents = new ArrayList<GameObject>();
 boolean[] keys = new boolean[512];
 Map map2;
+PVector turpos;
 //5 ints to count the number of AI spawned
 int num1=0;
 int num2=0;
@@ -34,6 +35,7 @@ void draw()
 {
   background(0); 
   //use draw to create parameters for different levels AI in levels ect
+  turpos=map2.mousePressed();
   map2.update();
   map2.render();
   //draws and moves AI
@@ -44,6 +46,13 @@ void draw()
     go.render();
     
   } 
+  for(int i = turrents.size() - 1 ; i >= 0 ;i --)
+  {
+    GameObject go = turrents.get(i);   
+    go.update();
+    go.render();
+    
+  }
   level1();
 }
 void level1()
@@ -145,5 +154,15 @@ void level5()
     gameObjects.add(ai);
     num5++;
   }
+  
+}
+void mouseClicked()
+{
+  
+    println(turpos);
+    
+    GameObject turrent = null;
+    turrent = new Turrent(turpos);
+    turrents.add(turrent);
   
 }
