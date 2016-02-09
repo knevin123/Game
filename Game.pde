@@ -318,6 +318,8 @@ void endmenu()
   stroke(255);
   text("Game",width/5,height/5);
   text("Over",width/4,height/3);
+  textSize(width/20);
+  text("Press 'r' to return to start menu",width/12,height/1.5);
   for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
   {
     GameObject go = gameObjects.get(i);
@@ -329,4 +331,8 @@ void endmenu()
     }
   }
   ai1=0;
+  ai2=0;
+  ai3=0;
+  ai4=0;
+  ai5=0;
 }
