@@ -7,7 +7,7 @@ void setup()
   map2=new Map();
   turpos = new PVector(0, 0);
   money=500;
-  lives=5;
+  lives=500;
   level=0;
   
 }
@@ -80,7 +80,7 @@ void draw()
           if(((AI) go).pos.x>width-(width/12) && ((AI) go).pos.y>height-(height/8)*3)
           {
             gameObjects.remove(go); 
-            lives--;
+            lives-=25;
           }
         }
         //boss ai
@@ -90,7 +90,7 @@ void draw()
           if(((AI) go).pos.x>width-(width/12) && ((AI) go).pos.y>height-(height/8)*3)
           {
             gameObjects.remove(go); 
-            lives-=2;
+            lives-=50;
           }
         }
     }
@@ -263,5 +263,5 @@ void menu()
   textSize(26);
   text("level:"+"/5",width/12,height-(height/8)+30);
   text("Money:"+money,(width/12)*4,height-(height/8)+30);
-  text("Lives:"+lives,(width/12)*6,height-(height/8)+30);
+  text("Tower Defences:"+lives,(width/12)*6,height-(height/8)+30);
 }
