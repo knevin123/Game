@@ -14,6 +14,15 @@ class AI extends Ship
     x=width/12;
     y=height/8;
     check=random(0,10);
+    if(check>2)
+    {
+      lives=100;
+    }
+    //boss ai
+    else
+    {
+      lives=200;
+    }
   }
   
   

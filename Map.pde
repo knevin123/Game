@@ -91,7 +91,7 @@ class Map extends GameObject
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
-             y1=mappos.y;
+             y1=mappos.y+(x/2);
            }
          }//end if
          rect(mappos.x,mappos.y,x,y);
@@ -104,7 +104,6 @@ class Map extends GameObject
   { 
     turrent.x=x1;
     turrent.y=y1;
-    //println(turrent);
     return turrent;
      
   }//end mouseclicked  

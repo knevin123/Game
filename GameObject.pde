@@ -14,15 +14,15 @@ abstract class GameObject
   GameObject()
   {
     // Constructor chaining
-    this((width/12)/2, (height/8)/2, 50);     
+    this((width/12)/2, (height/8)/2);     
   }
   
-  GameObject(float x, float y, float w)
+  GameObject(float x, float y)
   {
     pos = new PVector(x, y);
     forward = new PVector(0, -1);
-    this.w = w; // Disambiguate w by using this
-    this.halfW = w * 0.5f;
+    w=50;
+    halfW=w/2;
     this.theta = 0.0f;
   }
   

@@ -14,21 +14,20 @@ class Ship extends GameObject
   Ship()
   {
     // Constructor chaining. Call a constructor in the super class
-    super(45, 45, 50);     
+    super(45, 45);     
     
     
   }
   
   Ship(float startX, float startY, color c)
   {
-    super(startX, startY, 50);
+    super(startX, startY);
     stx=startX;
     sty=startY;
     this.c = c;
     lives=100;
     ammo=0;
     check=random(0,10);
-    println(check);
     
   }
 
@@ -55,13 +54,11 @@ class Ship extends GameObject
     //normal ai
     if(check>2)
     {
-      lives=100;
       triangle(halfW,-halfW,-halfW,-halfW,0,halfW);
     }
     //boss ai
     else
     {
-      lives=200;
       rect(-halfW,-halfW,w,w);
     }
     popMatrix();

@@ -15,10 +15,8 @@ void setup()
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<GameObject> turrents = new ArrayList<GameObject>();
 int num=0;
-int size;
 int money;
 PVector turpos;
-boolean draw;
 boolean[] keys = new boolean[512];
 Map map2;
 
@@ -35,40 +33,37 @@ void keyReleased()
 void draw()
 {
   background(0); 
-  size=0;
   //use draw to create parameters for different levels AI in levels ect
+  //collects map position for turrent from map
   turpos=map2.mousePressed();
-  //println(turpos);
   map2.update();
   map2.render();
-  
+  level1();
   for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
   {
     GameObject go = gameObjects.get(i);
-    if(go instanceof Turrent)
-    {
-      size++;
-    }
-      
     go.update();
     go.render();
+    if(go instanceof AI)
+    {
+     // println(((AI) go).lives);
+      if(((AI) go).lives<0)
+      {
+        
+        gameObjects.remove(go); 
+      }
+    }
     
   }  
   for(int i = turrents.size() - 1 ; i >= 0 ;i --)
   {
-    GameObject go = turrents.get(i);
-    if(go instanceof Turrent)
-    {
-      size++;
-    }
-      
+    GameObject go = turrents.get(i);  
     go.update();
     go.render();
     
   }
-  level2();
-  println(size); 
-  //println(money);
+  checkhits();
+  println(money);
 }
 
 void level1()
@@ -172,16 +167,36 @@ void level5()
   }
   
 }
+//uses map position to make a new turrent object
 void mouseClicked()
 {
   if(money>=250)
   {
-    println(turpos);
-    
     GameObject turrent = null;
     turrent = new Turrent(turpos);
     turrents.add(turrent);
     money=money-250;
-    //println(size); 
+  }
+}
+//checking if the turrents are close to the AI
+void checkhits()
+{
+  for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
+  {
+    GameObject go = gameObjects.get(i);
+    if(go instanceof AI)
+    {
+      for(int j = turrents.size() - 1 ; j >= 0 ;j --)
+      {
+         GameObject other= turrents.get(j);   
+         if(other instanceof Turrent)
+         {  
+            if (go.pos.dist(other.pos)< go.halfW+150 && frameCount % 70 == 0)
+            {
+              ((AI) go).lives=((AI) go).lives-25;
+            }
+         }
+      }
+    } 
   }
 }
