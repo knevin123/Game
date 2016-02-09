@@ -78,4 +78,14 @@ class Map extends GameObject
          
      }//end for
   }//end render
+  
+  //mousepressed which gets the position on the map where you clicked
+  PVector mousePressed() 
+  { 
+    turrent.x=x1;
+    turrent.y=y1;
+    //println(turrent);
+    return turrent;
+     
+  }//end mouseclicked
 }//end class
