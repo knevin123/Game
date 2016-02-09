@@ -7,19 +7,24 @@ void setup()
   map2=new Map();
   turpos = new PVector(0, 0);
   money=500;
-  lives=500;
+  lives=10;
   level=0;
-  
+  startmenu=true;
 }
 
 // The class name always starts with uppercase!!
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<GameObject> turrents = new ArrayList<GameObject>();
-int num=0;
+int ai1=0;
+int ai2=0;
+int ai3=0;
+int ai4=0;
+int ai5=0;
 int money;
 int lives;
 int level;
 PVector turpos;
+boolean startmenu;
 boolean[] keys = new boolean[512];
 Map map2;
 
@@ -35,82 +40,110 @@ void keyReleased()
 
 void draw()
 {
-  background(0); 
-  //use draw to create parameters for different levels AI in levels ect
-  //collects map position for turrent from map
-  turpos=map2.mousePressed();
-  //rendermap
-  map2.update();
-  map2.render();
-  //spawns level one when you press s at the main menu
-  if (keys['S'])
+  background(0);
+  if(lives<1)
   {
-    level=1;
+    endmenu();
   }
-  if(level==1)
+  if(startmenu)
   {
-    level1();
-  }
-  //render AI
-  for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
-  {
-    GameObject go = gameObjects.get(i);
-    go.update();
-    go.render();
-    if(go instanceof AI)
+    startmenu();
+    if (keys['S'])
     {
-      //remove AI if killed
-      if(((AI) go).lives<0)
-      {
-        if(((AI) go).check>2)
-        {
-          money+=150;
-        }
-        //boss ai
-        if(((AI) go).check<2)
-        {
-          money+=250;
-        }
-        gameObjects.remove(go); 
-      }
-      //removing ai and health
-      if(((AI) go).check>2)
-        {
-          //removes ai and health if it reaches end 
-          if(((AI) go).pos.x>width-(width/12) && ((AI) go).pos.y>height-(height/8)*3)
-          {
-            gameObjects.remove(go); 
-            lives-=25;
-          }
-        }
-        //boss ai
-        if(((AI) go).check<2)
-        {
-          //removes ai and health if it reaches end more health lost for boss
-          if(((AI) go).pos.x>width-(width/12) && ((AI) go).pos.y>height-(height/8)*3)
-          {
-            gameObjects.remove(go); 
-            lives-=50;
-          }
-        }
+      startmenu=false;
+      level=1;
+    }
+  }
+  if(lives<1)
+  {
+    level=0;
+    endmenu();
+    if (keys['R'])
+    {
+      lives=10;
+      level=0;
+      startmenu=true;
+      
+    }
+  }
+  if(level>0)
+  {
+    //use draw to create parameters for different levels AI in levels ect
+    //collects map position for turrent from map
+    turpos=map2.mousePressed();
+    //rendermap
+    map2.update();
+    map2.render();
+    //spawns level one when you press s at the main menu
+    if(level==1)
+    {
+      level1();
     }
     
-  }  
-  for(int i = turrents.size() - 1 ; i >= 0 ;i --)
-  {
-    GameObject go = turrents.get(i);  
-    go.update();
-    go.render();
-    
+    //render AI
+    for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
+    {
+      GameObject go = gameObjects.get(i);
+      go.update();
+      go.render();
+      if(go instanceof AI)
+      {
+        //remove AI if killed
+        if(((AI) go).lives<0)
+        {
+          if(((AI) go).check>2)
+          {
+            money+=150;
+          }
+          //boss ai
+          if(((AI) go).check<2)
+          {
+            money+=250;
+          }
+          gameObjects.remove(go); 
+        }
+        //removing ai and health
+        if(((AI) go).check>2)
+          {
+            //removes ai and health if it reaches end 
+            if(((AI) go).pos.x>width-(width/12) && ((AI) go).pos.y>height-(height/8)*3)
+            {
+              gameObjects.remove(go); 
+              lives-=25;
+            }
+          }
+          //boss ai
+          if(((AI) go).check<2)
+          {
+            //removes ai and health if it reaches end more health lost for boss
+            if(((AI) go).pos.x>width-(width/12) && ((AI) go).pos.y>height-(height/8)*3)
+            {
+              gameObjects.remove(go); 
+              lives-=50;
+            }
+          }
+      }
+      if(startmenu)
+      {
+        startmenu();
+      }
+    }  
+    for(int i = turrents.size() - 1 ; i >= 0 ;i --)
+    {
+      GameObject go = turrents.get(i);  
+      go.update();
+      go.render();
+      
+    }
+    checkhits();
+    menu();
+    //println(money);
   }
-  checkhits();
-  menu();
-  //println(money);
 }
 
 void level1()
 {
-  if (frameCount % 90 == 0 && num<5)
+  if (frameCount % 90 == 0 && ai1<5)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -124,13 +157,13 @@ void level1()
         break;
     }
     gameObjects.add(ai);
-    num++;
+    ai1++;
   }
   
 }
 void level2()
 {
-  if (frameCount % 90 == 0 && num<10)
+  if (frameCount % 90 == 0 && ai2<10)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -144,13 +177,13 @@ void level2()
         break;
     }
     gameObjects.add(ai);
-    num++;
+    ai2++;
   }
   
 }
 void level3()
 {
-  if (frameCount % 90 == 0 && num<15)
+  if (frameCount % 90 == 0 && ai3<15)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -164,14 +197,14 @@ void level3()
         break;
     }
     gameObjects.add(ai);
-    num++;
+    ai3++;
   }
   
 }
 
 void level4()
 {
-  if (frameCount % 90 == 0 && num<20)
+  if (frameCount % 90 == 0 && ai4<20)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -185,13 +218,13 @@ void level4()
         break;
     }
     gameObjects.add(ai);
-    num++;
+    ai4++;
   }
   
 }
 void level5()
 {
-  if (frameCount % 90 == 0 && num<25)
+  if (frameCount % 90 == 0 && ai5<25)
   {
     GameObject ai = null;
     int i = (int) random(0, 2);
@@ -205,7 +238,7 @@ void level5()
         break;
     }
     gameObjects.add(ai);
-    num++;
+    ai5++;
   }
   
 }
@@ -261,7 +294,39 @@ void menu()
   fill(255);
   stroke(255);
   textSize(26);
-  text("level:"+"/5",width/12,height-(height/8)+30);
+  text("level:"+level+"/5",width/12,height-(height/8)+30);
   text("Money:"+money,(width/12)*4,height-(height/8)+30);
   text("Tower Defences:"+lives,(width/12)*6,height-(height/8)+30);
+}
+
+void startmenu()
+{
+    background(0);
+    textSize(width/10);
+    fill(255);
+    stroke(255);
+    text("Tower",width/5,height/5);
+    text("Defence",width/4,height/3);
+    textSize(width/20);
+    text("Press 's' to start",width/12,height/1.5);
+}
+void endmenu()
+{
+  background(0);
+  textSize(width/10);
+  fill(255);
+  stroke(255);
+  text("Game",width/5,height/5);
+  text("Over",width/4,height/3);
+  for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
+  {
+    GameObject go = gameObjects.get(i);
+    go.update();
+    go.render();
+    if(go instanceof AI)
+    {
+      gameObjects.remove(go); 
+    }
+  }
+  ai1=0;
 }
