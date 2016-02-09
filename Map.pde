@@ -32,6 +32,11 @@ class Map extends GameObject
          {
            fill(255,0,0);
            stroke(255,0,0);
+           if(mousePressed)
+           {
+             x1=mappos.x+(x/2);
+             y1=mappos.y;
+           }
          }//end if
          
          rect(mappos.x,mappos.y,x,y);
@@ -46,7 +51,11 @@ class Map extends GameObject
          {
            fill(255,0,0);
            stroke(255,0,0);
-           
+           if(mousePressed)
+           {
+             x1=mappos.x+(x/2);
+             y1=mappos.y;
+           }
          }//end if
          rect(mappos.x,mappos.y,x,y);
          fill(0,255,0);
@@ -59,6 +68,11 @@ class Map extends GameObject
          {
            fill(255,0,0);
            stroke(255,0,0);
+           if(mousePressed)
+           {
+             x1=mappos.x+(x/2);
+             y1=mappos.y;
+           }
          }//end if
          rect(mappos.x,mappos.y,x,y);
          fill(0,255,0);
@@ -71,6 +85,11 @@ class Map extends GameObject
          {
            fill(255,0,0);
            stroke(255,0,0);
+           if(mousePressed)
+           {
+             x1=mappos.x+(x/2);
+             y1=mappos.y;
+           }
          }//end if
          rect(mappos.x,mappos.y,x,y);
          fill(0,255,0);
