@@ -7,6 +7,8 @@ void setup()
   map2=new Map();
   turpos = new PVector(0, 0);
   money=500;
+  lives=5;
+  level=1;
   
 }
 
@@ -15,6 +17,8 @@ ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<GameObject> turrents = new ArrayList<GameObject>();
 int num=0;
 int money;
+int lives;
+int level;
 PVector turpos;
 boolean[] keys = new boolean[512];
 Map map2;
@@ -35,9 +39,11 @@ void draw()
   //use draw to create parameters for different levels AI in levels ect
   //collects map position for turrent from map
   turpos=map2.mousePressed();
+  //rendermap
   map2.update();
   map2.render();
   level1();
+  //render AI
   for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
   {
     GameObject go = gameObjects.get(i);
@@ -45,7 +51,7 @@ void draw()
     go.render();
     if(go instanceof AI)
     {
-     // println(((AI) go).lives);
+      //remove AI if killed
       if(((AI) go).lives<0)
       {
         if(((AI) go).check>2)
@@ -59,6 +65,7 @@ void draw()
         }
         gameObjects.remove(go); 
       }
+      
     }
     
   }  
@@ -71,7 +78,7 @@ void draw()
   }
   checkhits();
   menu();
-  println(money);
+  //println(money);
 }
 
 void level1()
@@ -212,7 +219,7 @@ void checkhits()
          GameObject other= turrents.get(j);   
          if(other instanceof Turrent)
          {  
-            if (go.pos.dist(other.pos)< go.halfW+150 && frameCount % 70 == 0)
+            if (go.pos.dist(other.pos)< go.halfW+150 && frameCount % 80 == 0)
             {
               ((AI) go).lives=((AI) go).lives-25;
             }
@@ -227,6 +234,7 @@ void menu()
   fill(255);
   stroke(255);
   textSize(26);
-  text("level:",width/12,height-(height/8)+30);
-  
+  text("level:"+"/5",width/12,height-(height/8)+30);
+  text("Money:"+money,(width/12)*4,height-(height/8)+30);
+  text("Lives:"+lives,(width/12)*6,height-(height/8)+30);
 }

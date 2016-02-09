@@ -21,7 +21,7 @@ class AI extends Ship
     //boss ai
     else
     {
-      lives=200;
+      lives=175;
     }
   }
   
