@@ -8,7 +8,6 @@ void setup()
   turpos = new PVector(0, 0);
   money=500;
   
-  
 }
 
 // The class name always starts with uppercase!!
@@ -71,7 +70,7 @@ void draw()
     
   }
   checkhits();
-  println(money);
+  //println(money);
 }
 
 void level1()
@@ -178,7 +177,20 @@ void level5()
 //uses map position to make a new turrent object
 void mouseClicked()
 {
-  if(money>=250)
+  boolean dupe=false;
+  //check for duplicate turrents
+  for(int i = turrents.size() - 1 ; i >= 0 ;i --)
+  {
+    GameObject go = turrents.get(i);
+    if(go instanceof Turrent)
+    {
+      if(go.pos.x==turpos.x)
+      {
+        dupe=true;
+      }
+    } 
+  }
+  if(money>=250 && dupe==false)
   {
     GameObject turrent = null;
     turrent = new Turrent(turpos);
