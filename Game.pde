@@ -11,6 +11,7 @@ void setup()
 
 // The class name always starts with uppercase!!
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
+ArrayList<GameObject> turrents = new ArrayList<GameObject>();
 boolean[] keys = new boolean[512];
 Map map2;
 //5 ints to count the number of AI spawned
