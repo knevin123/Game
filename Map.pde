@@ -26,7 +26,14 @@ class Map extends GameObject
      fill(0,255,0);
      stroke(0,255,0);
      for(mappos.x=x;mappos.x<width;mappos.x+=x)
-     {   
+     {
+         
+         if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
+         {
+           fill(255,0,0);
+           stroke(255,0,0);
+         }//end if
+         
          rect(mappos.x,mappos.y,x,y);
          fill(0,255,0);
          stroke(0,255,0);
@@ -35,6 +42,12 @@ class Map extends GameObject
      mappos.y+=y*2;
      for(mappos.x=0;mappos.x<width-x;mappos.x+=x)
      {
+         if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
+         {
+           fill(255,0,0);
+           stroke(255,0,0);
+           
+         }//end if
          rect(mappos.x,mappos.y,x,y);
          fill(0,255,0);
          stroke(0,255,0);
@@ -42,6 +55,11 @@ class Map extends GameObject
      mappos.y+=y*2;
      for(mappos.x=x;mappos.x<width;mappos.x+=x)
      {
+         if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
+         {
+           fill(255,0,0);
+           stroke(255,0,0);
+         }//end if
          rect(mappos.x,mappos.y,x,y);
          fill(0,255,0);
          stroke(0,255,0);
@@ -49,12 +67,15 @@ class Map extends GameObject
      mappos.y+=y*2;
      for(mappos.x=0;mappos.x<width;mappos.x+=x)
      {
+         if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
+         {
+           fill(255,0,0);
+           stroke(255,0,0);
+         }//end if
          rect(mappos.x,mappos.y,x,y);
          fill(0,255,0);
          stroke(0,255,0);
          
      }//end for
-     
-     
-  }//end render 
+  }//end render
 }//end class
