@@ -65,7 +65,26 @@ void draw()
         }
         gameObjects.remove(go); 
       }
-      
+      //removing ai and health
+      if(((AI) go).check>2)
+        {
+          //removes ai and health if it reaches end 
+          if(((AI) go).pos.x>width-(width/12) && ((AI) go).pos.y>height-(height/8)*3)
+          {
+            gameObjects.remove(go); 
+            lives--;
+          }
+        }
+        //boss ai
+        if(((AI) go).check<2)
+        {
+          //removes ai and health if it reaches end more health lost for boss
+          if(((AI) go).pos.x>width-(width/12) && ((AI) go).pos.y>height-(height/8)*3)
+          {
+            gameObjects.remove(go); 
+            lives-=2;
+          }
+        }
     }
     
   }  
