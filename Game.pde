@@ -10,6 +10,7 @@ void setup()
   lives=10;
   level=0;
   startmenu=true;
+  gamewon=false;
 }
 
 // The class name always starts with uppercase!!
@@ -26,6 +27,7 @@ int level;
 int ai;
 PVector turpos;
 boolean startmenu;
+boolean gamewon;
 boolean[] keys = new boolean[512];
 Map map2;
 
@@ -53,6 +55,17 @@ void draw()
     {
       startmenu=false;
       level=1;
+    }
+  }
+  if(gamewon==true)
+  {
+    winmenu();
+    if (keys['R'])
+    {
+      lives=10;
+      level=0;
+      startmenu=true;
+      
     }
   }
   if(lives<1)
@@ -117,7 +130,8 @@ void draw()
       level5();
       if(ai>24)
       {
-        //gamewon;
+        gamewon=true;
+        level=0;
       }
     }
     
@@ -360,6 +374,32 @@ void endmenu()
   stroke(255);
   text("Game",width/5,height/5);
   text("Over",width/4,height/3);
+  textSize(width/20);
+  text("Press 'r' to return to start menu",width/12,height/1.5);
+  for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
+  {
+    GameObject go = gameObjects.get(i);
+    go.update();
+    go.render();
+    if(go instanceof AI)
+    {
+      gameObjects.remove(go); 
+    }
+  }
+  ai1=0;
+  ai2=0;
+  ai3=0;
+  ai4=0;
+  ai5=0;
+}
+void winmenu()
+{
+  background(0);
+  textSize(width/10);
+  fill(255);
+  stroke(255);
+  text("You",width/5,height/5);
+  text("Won",width/4,height/3);
   textSize(width/20);
   text("Press 'r' to return to start menu",width/12,height/1.5);
   for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
