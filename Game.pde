@@ -8,7 +8,7 @@ void setup()
   turpos = new PVector(0, 0);
   money=500;
   lives=5;
-  level=1;
+  level=0;
   
 }
 
@@ -42,7 +42,15 @@ void draw()
   //rendermap
   map2.update();
   map2.render();
-  level1();
+  //spawns level one when you press s at the main menu
+  if (keys['S'])
+  {
+    level=1;
+  }
+  if(level==1)
+  {
+    level1();
+  }
   //render AI
   for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
   {
