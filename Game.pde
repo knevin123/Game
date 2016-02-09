@@ -23,6 +23,7 @@ int ai5=0;
 int money;
 int lives;
 int level;
+int ai;
 PVector turpos;
 boolean startmenu;
 boolean[] keys = new boolean[512];
@@ -78,6 +79,46 @@ void draw()
     if(level==1)
     {
       level1();
+      if(ai>4)
+      {
+        level=2;
+        ai=0;
+      }
+    }
+    if(level==2)
+    {
+      level2();
+      if(ai>9)
+      {
+        level=3;
+        ai=0;
+      }
+    }
+    if(level==3)
+    {
+      level3();
+      if(ai>14)
+      {
+        level=4;
+        ai=0;
+      }
+    }
+    if(level==4)
+    {
+      level4();
+      if(ai>19)
+      {
+        level=5;
+        ai=0;
+      }
+    }
+    if(level==5)
+    {
+      level5();
+      if(ai>24)
+      {
+        //gamewon;
+      }
     }
     
     //render AI
@@ -100,7 +141,8 @@ void draw()
           {
             money+=250;
           }
-          gameObjects.remove(go); 
+          gameObjects.remove(go);
+          ai++;
         }
         //removing ai and health
         if(((AI) go).check>2)
