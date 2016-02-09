@@ -49,7 +49,15 @@ void draw()
      // println(((AI) go).lives);
       if(((AI) go).lives<0)
       {
-        
+        if(((AI) go).check>2)
+        {
+          money+=150;
+        }
+        //boss ai
+        if(((AI) go).check<2)
+        {
+          money+=250;
+        }
         gameObjects.remove(go); 
       }
     }
