@@ -11,20 +11,26 @@ void setup()
   level=0;
   startmenu=true;
   gamewon=false;
+  aicount=0;
 }
 
 // The class name always starts with uppercase!!
 ArrayList<GameObject> gameObjects = new ArrayList<GameObject>();
 ArrayList<GameObject> turrents = new ArrayList<GameObject>();
+//counter for amount od ai spawned for each level
 int ai1=0;
 int ai2=0;
 int ai3=0;
 int ai4=0;
 int ai5=0;
+//money and defence
 int money;
 int lives;
+//level
 int level;
+//ai killed and total ai
 int ai;
+int aicount;
 PVector turpos;
 boolean startmenu;
 boolean gamewon;
@@ -243,6 +249,7 @@ void draw()
 
 void level1()
 {
+  aicount=5;
   if (frameCount % 90 == 0 && ai1<5)
   {
     GameObject ai = null;
@@ -263,6 +270,7 @@ void level1()
 }
 void level2()
 {
+  aicount=10;
   if (frameCount % 90 == 0 && ai2<10)
   {
     GameObject ai = null;
@@ -285,6 +293,7 @@ void level3()
 {
   if (frameCount % 90 == 0 && ai3<15)
   {
+    aicount=15;
     GameObject ai = null;
     int i = (int) random(0, 2);
     switch (i)
@@ -304,6 +313,7 @@ void level3()
 
 void level4()
 {
+  aicount=20;
   if (frameCount % 90 == 0 && ai4<20)
   {
     GameObject ai = null;
@@ -324,6 +334,7 @@ void level4()
 }
 void level5()
 {
+  aicount=25;
   if (frameCount % 90 == 0 && ai5<25)
   {
     GameObject ai = null;
@@ -397,7 +408,7 @@ void menu()
   text("level:"+level+"/5",width/12,height-(height/16)+13);
   text("Money:"+money,(width/12)*3,height-(height/16)+13);
   text("Tower Defences:"+lives,(width/12)*5,height-(height/16)+13);
-  text("Creeps killed(this round):"+ai,(width/12)*8,height-(height/16)+13);
+  text("Creeps killed(this round):"+ai+"/"+aicount,(width/12)*8,height-(height/16)+13);
 }
 
 void startmenu()

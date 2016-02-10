@@ -16,12 +16,12 @@ class AI extends Ship
     check=random(0,10);
     if(check>2)
     {
-      lives=100;
+      lives=175;
     }
     //boss ai
     else
     {
-      lives=175;
+      lives=250;
     }
   }
   
