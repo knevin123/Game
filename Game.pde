@@ -435,11 +435,19 @@ void endmenu()
   for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
   {
     GameObject go = gameObjects.get(i);
-    go.update();
-    go.render();
+    
     if(go instanceof AI)
     {
       gameObjects.remove(go); 
+    }
+  }
+  for(int i = turrents.size() - 1 ; i >= 0 ;i --)
+  {
+    GameObject go = turrents.get(i);
+    
+    if(go instanceof Turrent)
+    {
+      turrents.remove(go); 
     }
   }
   ai1=0;
@@ -464,6 +472,16 @@ void winmenu()
     go.update();
     go.render();
     if(go instanceof AI)
+    {
+      gameObjects.remove(go); 
+    }
+  }
+  for(int i = turrents.size() - 1 ; i >= 0 ;i --)
+  {
+    GameObject go = turrents.get(i);
+    go.update();
+    go.render();
+    if(go instanceof Turrent)
     {
       gameObjects.remove(go); 
     }
