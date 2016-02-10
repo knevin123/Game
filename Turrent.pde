@@ -12,6 +12,7 @@ class Turrent extends GameObject
   }
   void render()
   {    
+    //draws the turrents
     stroke(255);
     fill(255);
     ellipse(pos.x,pos.y,70,70);

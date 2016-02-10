@@ -31,10 +31,13 @@ int level;
 //ai killed and total ai
 int ai;
 int aicount;
+//position of turrent
 PVector turpos;
+//checks for start and win
 boolean startmenu;
 boolean gamewon;
 boolean[] keys = new boolean[512];
+//map
 Map map2;
 
 void keyPressed()
@@ -78,12 +81,15 @@ void draw()
       
     }
   }
+  //calls end menu if there's no tower defences left
   if(lives<1)
   {
     level=0;
     endmenu();
+    //r to return to startmenu
     if (keys['R'])
     {
+      //reset lives and levels
       lives=10;
       level=0;
       startmenu=true;
@@ -102,6 +108,7 @@ void draw()
     if(level==1)
     {
       level1();
+      //makes next level if all creeps dead
       if(ai>4)
       {
         level=2;
@@ -111,6 +118,7 @@ void draw()
     if(level==2)
     {
       level2();
+      //increases speed
       for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
       {
         GameObject go = gameObjects.get(i);
@@ -121,6 +129,7 @@ void draw()
           go.speed=1.55;
         }
       }
+      //makes next level if all creeps dead
       if(ai>9)
       {
         level=3;
@@ -130,6 +139,7 @@ void draw()
     if(level==3)
     {
       level3();
+      //increases speed
       for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
       {
         GameObject go = gameObjects.get(i);
@@ -140,6 +150,7 @@ void draw()
           go.speed=1.60;
         }
       }
+      //makes next level if all creeps dead
       if(ai>14)
       {
         level=4;
@@ -149,6 +160,7 @@ void draw()
     if(level==4)
     {
       level4();
+      //increases speed
       for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
       {
         GameObject go = gameObjects.get(i);
@@ -159,6 +171,7 @@ void draw()
           go.speed=1.65;
         }
       }
+      //makes next level if all creeps dead
       if(ai>19)
       {
         level=5;
@@ -168,6 +181,7 @@ void draw()
     if(level==5)
     {
       level5();
+      //increases speed
       for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
       {
         GameObject go = gameObjects.get(i);

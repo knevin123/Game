@@ -2,10 +2,7 @@
 class Ship extends GameObject
 {
   // Fields
-  float stx;
-  float sty;
   int lives;
-  int ammo;
   float check;
   
   // Constructor!!
@@ -22,25 +19,19 @@ class Ship extends GameObject
   Ship(float startX, float startY, color c)
   {
     super(startX, startY);
-    stx=startX;
-    sty=startY;
     this.c = c;
     lives=100;
-    ammo=0;
     check=random(0,10);
     
   }
-
-  int elapsed = 12;
   
   void update()
   {
+    //updates/moves the ai/ship
     forward.x = sin(theta);
     forward.y = - cos(theta);
     forward.mult(speed);
     
-    
-    elapsed ++;
   }
   
   void render()

@@ -1,12 +1,11 @@
 
 class Map extends GameObject
 {
+  //fields
   int x=width/12;
   int y=height/8;
   PVector turrent;
   PVector mappos;
-  float squarex;
-  int squarey;
   float x1;
   float y1;
   
@@ -29,12 +28,12 @@ class Map extends GameObject
      stroke(80);
      for(mappos.x=x;mappos.x<width;mappos.x+=x)
      {
-         
+         //changes color if mouse hoves over a square
          if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
          {
            fill(120);
            stroke(120);
-         
+           //saves turrent position
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
@@ -50,10 +49,12 @@ class Map extends GameObject
      mappos.y+=y*2;
      for(mappos.x=0;mappos.x<width-x;mappos.x+=x)
      {
+         //changes color if mouse hoves over a square
          if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
          {
            fill(120);
            stroke(120);
+           //saves turrent position
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
@@ -67,10 +68,12 @@ class Map extends GameObject
      mappos.y+=y*2;
      for(mappos.x=x;mappos.x<width;mappos.x+=x)
      {
+         //changes color if mouse hoves over a square
          if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
          {
            fill(120);
            stroke(120);
+           //saves turrent position
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
@@ -84,10 +87,12 @@ class Map extends GameObject
      mappos.y+=y*2;
      for(mappos.x=0;mappos.x<width;mappos.x+=x)
      {
+         //changes color if mouse hoves over a square
          if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
          {
            fill(120);
            stroke(120);
+           //saves turrent position
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
@@ -100,6 +105,7 @@ class Map extends GameObject
          
      }//end for
   }//end render
+  //returns turrent position on mouse press
   PVector mousePressed() 
   { 
     turrent.x=x1;
