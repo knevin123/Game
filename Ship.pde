@@ -47,7 +47,7 @@ class Ship extends GameObject
   {
     pushMatrix(); // reset the translation and rotation
     translate(pos.x, pos.y);
-    stroke(0,0,255);
+    stroke(255,0,0);
     fill(c);
     rotate(theta); // We want rotate to happen first, so you make the call AFTER translate 
     //spawns either a boss or a  normal AI

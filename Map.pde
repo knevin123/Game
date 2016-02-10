@@ -25,15 +25,15 @@ class Map extends GameObject
   {
      
      mappos = new PVector(x, 0);
-     fill(100);
-     stroke(100);
+     fill(80);
+     stroke(80);
      for(mappos.x=x;mappos.x<width;mappos.x+=x)
      {
          
          if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
          {
-           fill(200);
-           stroke(200);
+           fill(120);
+           stroke(120);
          
            if(mousePressed)
            {
@@ -43,8 +43,8 @@ class Map extends GameObject
          }//end if
          
          rect(mappos.x,mappos.y,x,y);
-         fill(100);
-         stroke(100);
+         fill(80);
+         stroke(80);
          
      }//end for
      mappos.y+=y*2;
@@ -52,8 +52,8 @@ class Map extends GameObject
      {
          if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
          {
-           fill(200);
-           stroke(200);
+           fill(120);
+           stroke(120);
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
@@ -61,16 +61,16 @@ class Map extends GameObject
            }
          }//end if
          rect(mappos.x,mappos.y,x,y);
-         fill(100);
-         stroke(100);
+         fill(80);
+         stroke(80);
      }//end for
      mappos.y+=y*2;
      for(mappos.x=x;mappos.x<width;mappos.x+=x)
      {
          if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
          {
-           fill(200);
-           stroke(200);
+           fill(120);
+           stroke(120);
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
@@ -78,16 +78,16 @@ class Map extends GameObject
            }
          }//end if
          rect(mappos.x,mappos.y,x,y);
-         fill(100);
-         stroke(100);
+         fill(80);
+         stroke(80);
      }//end for
      mappos.y+=y*2;
      for(mappos.x=0;mappos.x<width;mappos.x+=x)
      {
          if (mouseX>mappos.x && mouseX<(mappos.x+x) && mouseY>mappos.y && mouseY<(mappos.y+y))
          {
-           fill(200);
-           stroke(200);
+           fill(120);
+           stroke(120);
            if(mousePressed)
            {
              x1=mappos.x+(x/2);
@@ -95,8 +95,8 @@ class Map extends GameObject
            }
          }//end if
          rect(mappos.x,mappos.y,x,y);
-         fill(100);
-         stroke(100);
+         fill(80);
+         stroke(80);
          
      }//end for
   }//end render
