@@ -104,6 +104,8 @@ class Map extends GameObject
          stroke(80);
          
      }//end for
+     fill(51,51,255);
+     rect(width-(width/12),height-((height/8)*3)-3,x,y);
   }//end render
   //returns turrent position on mouse press
   PVector mousePressed() 
