@@ -44,19 +44,23 @@ void keyReleased()
 void draw()
 {
   background(0);
+  //call endmenu if you lose
   if(lives<1)
   {
     endmenu();
   }
+  //call start menu at the beginning
   if(startmenu)
   {
     startmenu();
+    //if press s start game
     if (keys['S'])
     {
       startmenu=false;
       level=1;
     }
   }
+  //if all waves over gamewon called
   if(gamewon==true)
   {
     winmenu();
@@ -82,6 +86,7 @@ void draw()
   }
   if(level>0)
   {
+    int check=0;
     //use draw to create parameters for different levels AI in levels ect
     //collects map position for turrent from map
     turpos=map2.mousePressed();
@@ -101,6 +106,16 @@ void draw()
     if(level==2)
     {
       level2();
+      for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
+      {
+        GameObject go = gameObjects.get(i);
+        go.update();
+        go.render();
+        if(go instanceof AI)
+        {
+          go.speed=1.55;
+        }
+      }
       if(ai>9)
       {
         level=3;
@@ -110,6 +125,16 @@ void draw()
     if(level==3)
     {
       level3();
+      for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
+      {
+        GameObject go = gameObjects.get(i);
+        go.update();
+        go.render();
+        if(go instanceof AI)
+        {
+          go.speed=1.60;
+        }
+      }
       if(ai>14)
       {
         level=4;
@@ -119,6 +144,16 @@ void draw()
     if(level==4)
     {
       level4();
+      for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
+      {
+        GameObject go = gameObjects.get(i);
+        go.update();
+        go.render();
+        if(go instanceof AI)
+        {
+          go.speed=1.65;
+        }
+      }
       if(ai>19)
       {
         level=5;
@@ -128,6 +163,16 @@ void draw()
     if(level==5)
     {
       level5();
+      for(int i = gameObjects.size() - 1 ; i >= 0 ;i --)
+      {
+        GameObject go = gameObjects.get(i);
+        go.update();
+        go.render();
+        if(go instanceof AI)
+        {
+          go.speed=1.70;
+        }
+      }
       if(ai>24)
       {
         gamewon=true;
@@ -308,7 +353,7 @@ void mouseClicked()
     GameObject go = turrents.get(i);
     if(go instanceof Turrent)
     {
-      if(go.pos.x==turpos.x)
+      if(go.pos.x==turpos.x && go.pos.y==turpos.y)
       {
         dupe=true;
       }
