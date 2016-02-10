@@ -86,7 +86,6 @@ void draw()
   }
   if(level>0)
   {
-    int check=0;
     //use draw to create parameters for different levels AI in levels ect
     //collects map position for turrent from map
     turpos=map2.mousePressed();
@@ -395,9 +394,10 @@ void menu()
   fill(255);
   stroke(255);
   textSize(26);
-  text("level:"+level+"/5",width/12,height-(height/8)+30);
-  text("Money:"+money,(width/12)*4,height-(height/8)+30);
-  text("Tower Defences:"+lives,(width/12)*6,height-(height/8)+30);
+  text("level:"+level+"/5",width/12,height-(height/16)+13);
+  text("Money:"+money,(width/12)*3,height-(height/16)+13);
+  text("Tower Defences:"+lives,(width/12)*5,height-(height/16)+13);
+  text("Creeps killed(this round):"+ai,(width/12)*8,height-(height/16)+13);
 }
 
 void startmenu()
@@ -415,8 +415,8 @@ void endmenu()
 {
   background(0);
   textSize(width/10);
-  fill(255);
-  stroke(255);
+  fill(255, 51, 51);
+  stroke(255, 51, 51);
   text("Game",width/5,height/5);
   text("Over",width/4,height/3);
   textSize(width/20);
@@ -441,8 +441,8 @@ void winmenu()
 {
   background(0);
   textSize(width/10);
-  fill(255);
-  stroke(255);
+  fill(51, 204, 51);
+  stroke(51, 204, 51);
   text("You",width/5,height/5);
   text("Won",width/4,height/3);
   textSize(width/20);
