@@ -203,7 +203,7 @@ void draw()
           //boss ai
           if(((AI) go).check<2)
           {
-            money+=250;
+            money+=200;
           }
           gameObjects.remove(go);
           ai++;
