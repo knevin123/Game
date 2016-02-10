@@ -450,6 +450,7 @@ void endmenu()
       turrents.remove(go); 
     }
   }
+  money=500;
   ai1=0;
   ai2=0;
   ai3=0;
@@ -486,6 +487,7 @@ void winmenu()
       gameObjects.remove(go); 
     }
   }
+  money=500;
   ai1=0;
   ai2=0;
   ai3=0;
