@@ -7,7 +7,7 @@ void setup()
   map2=new Map();
   turpos = new PVector(0, 0);
   money=500;
-  lives=10;
+  lives=150;
   level=0;
   startmenu=true;
   gamewon=false;
